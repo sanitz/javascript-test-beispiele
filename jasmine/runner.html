@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>MVP Beispiel</title>
+         <link rel="stylesheet" type="text/css" href="jasmine.css">
+        <script type="text/javascript" src="jasmine.js"></script>
+        <script type="text/javascript" src="jasmine-html.js"></script>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="roman.js"></script>
+        <script type="text/javascript" src="spec/mvp_jasmine.js"></script>
+    </head>
+    <body>
+        <div style='display:none'> 
+            <input id='eingabe' type='text'/> 
+            <span id='ausgabe'>???</span> 
+        </div>
+        <script type="text/javascript">
+        $(function() {
+            jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+            jasmine.getEnv().execute();
+        });
+        </script>
+    </body>
+</html>
+
+

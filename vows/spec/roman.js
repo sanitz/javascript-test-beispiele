@@ -36,7 +36,7 @@ var vows = require('vows'),
             '5 wird zu V': check(5, 'V'),
             '10 wird zu X': check(10, 'X'),
         },
-        'wandelt dezimale in kombiniertei römische Zahlen um': {
+        'wandelt dezimale in kombinierte römische Zahlen um': {
             topic: { toRoman: toRoman },
             '6 wird zu VI': check(6, 'VI'),
             '4 wird zu IV': check(4, 'IV'),

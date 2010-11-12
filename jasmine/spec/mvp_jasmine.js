@@ -30,8 +30,8 @@ describe('Anzeige römischer Zahlen', function () {
     var anzeige, eingabe, ausgabe;
 
     beforeEach(function() {
-        eingabe = $('#eingabe');
-        ausgabe = $('#ausgabe');
+        eingabe = $("<input id='eingabe' type='text'/>");
+        ausgabe = $("<span id='ausgabe'>???</span>");
         anzeige = new roman.view.neueAnzeige(eingabe, ausgabe);
     });
 

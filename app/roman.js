@@ -42,6 +42,7 @@ roman.view = (function (jQuery) {
     var Anzeige = function (eingabeFeld, ausgabeFeld) {
         this.eingabeFeld = eingabeFeld;
         this.ausgabeFeld = ausgabeFeld;
+        this.callbacks = [];
         var anzeige = this;
 
         eingabeFeld.keyup(function () {
@@ -51,8 +52,12 @@ roman.view = (function (jQuery) {
     Anzeige.prototype.zeigeErgebnis = function (ergebnis) {
         this.ausgabeFeld.text(ergebnis);
     };
-    Anzeige.prototype.beiEingabe = function () {};
-
+    Anzeige.prototype.beiEingabe = function (eingabe) {
+        for (var i=0; i < this.callbacks.length; i++) this.callbacks[i](eingabe);
+    };
+    Anzeige.prototype.addCallback = function (callback) { 
+        this.callbacks.push(callback)
+    };
     return {
         neueAnzeige: function (eingabeFeld, ausgabeFeld) {
             return new Anzeige(eingabeFeld, ausgabeFeld);
@@ -63,9 +68,9 @@ roman.view = (function (jQuery) {
 roman.presenter = (function (model, view) {
     return {
         init: function (anzeige) {
-            anzeige.beiEingabe = function (eingabe) {
+            anzeige.addCallback(function (eingabe) {
                 anzeige.zeigeErgebnis(model.safeToRoman(eingabe));
-            };            
+            });         
         },
         start: function (eingabeFeld, ausgabeFeld) {
             this.init(view.neueAnzeige(eingabeFeld, ausgabeFeld));

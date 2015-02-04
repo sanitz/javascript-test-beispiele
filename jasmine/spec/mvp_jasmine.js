@@ -30,8 +30,8 @@ describe('Anzeige römischer Zahlen', function () {
     var anzeige, eingabe, ausgabe;
 
     beforeEach(function() {
-        eingabe = $("<input id='eingabe' type='text'/>");
-        ausgabe = $("<span id='ausgabe'>???</span>");
+        eingabe = $("<input/>");
+        ausgabe = $("<span></span>");
         anzeige = new roman.view.neueAnzeige(eingabe, ausgabe);
     });
 
@@ -52,7 +52,7 @@ describe('Interaktion', function () {
     var anzeige;
 
     beforeEach(function() {
-        anzeige = { zeigeErgebnis: function() {} };
+        anzeige = new roman.view.neueAnzeige($("<input/>"), $("<span></span>"));
         spyOn(anzeige, 'zeigeErgebnis');
         roman.presenter.init(anzeige);
     });
